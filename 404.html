@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>予定フォーム</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<main>
+  <div id="app" hidden>
+    <h1>予定フォームで開く</h1>
+    <p>この予定を予定フォームで開きます。開かない場合は、下のボタンを押してください。</p>
+    <p><a class="btn" id="open" href="#">予定フォームで開く</a></p>
+    <p class="muted">毎回このページを通さずに直接開くには、スマホの設定 → アプリ → 予定フォーム → デフォルトで開く で、このアドレスのリンクを予定フォームで開くようにしてください。</p>
+  </div>
+  <div id="nf" hidden>
+    <h1>ページが見つかりません</h1>
+    <p><a href="/">トップへ</a></p>
+  </div>
+</main>
+<script>
+  // /yotei-form/e/<予定ID> は予定フォームの予定へのリンク
+  var m = location.pathname.match(/^\/yotei-form\/e\/(\d+)/);
+  if (m) {
+    var url = 'intent://e/' + m[1] + '#Intent;scheme=yoteiform;package=com.yoteiform.app;end';
+    document.getElementById('open').href = url;
+    document.getElementById('app').hidden = false;
+    location.href = url;
+  } else {
+    document.getElementById('nf').hidden = false;
+  }
+</script>
+</body>
+</html>

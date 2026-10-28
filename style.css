@@ -1,0 +1,7 @@
+body { margin: 0; background: #f5f3ef; color: #2a2927; font: 16px/1.7 Roboto, "Noto Sans JP", system-ui, sans-serif; }
+main { max-width: 680px; margin: 0 auto; padding: 24px 16px 48px; }
+h1 { font-size: 22px; }
+h2 { font-size: 17px; margin-top: 28px; }
+a { color: #b85f1c; }
+.btn { display: inline-block; background: #e07a2f; color: #fff; text-decoration: none; font-weight: 700; padding: 12px 20px; border-radius: 12px; }
+.muted { color: #77736c; font-size: 14px; }
