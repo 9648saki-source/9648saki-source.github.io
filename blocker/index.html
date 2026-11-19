@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>自動ブロッカー切替</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<main>
+  <h1 id="h">自動ブロッカーをオフにする</h1>
+  <p>ふだんはこのページは出ずに、「自動ブロッカー切替」アプリがすぐ切り替えます。このページが出たときは、下のボタンを押してください。</p>
+  <p><a class="btn" id="go" href="intent://off#Intent;scheme=blockermark;package=com.blockermark.app;end">オフにする</a></p>
+  <p><a id="other" href="intent://on#Intent;scheme=blockermark;package=com.blockermark.app;end">オンにする場合はこちら</a></p>
+  <p class="muted">毎回このページを通さずに直接切り替えるには、スマホの設定 → アプリ → 自動ブロッカー切替 → デフォルトで開く で、このアドレスのリンクを開くようにしてください。</p>
+</main>
+<script>
+  // /blocker/on/ はオンにするリンク
+  if (/^\/blocker\/on/.test(location.pathname)) {
+    document.getElementById('h').textContent = '自動ブロッカーをオンにする';
+    var go = document.getElementById('go'), other = document.getElementById('other');
+    go.textContent = 'オンにする';
+    go.href = 'intent://on#Intent;scheme=blockermark;package=com.blockermark.app;end';
+    other.textContent = 'オフにする場合はこちら';
+    other.href = 'intent://off#Intent;scheme=blockermark;package=com.blockermark.app;end';
+  }
+</script>
+</body>
+</html>

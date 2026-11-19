@@ -1,0 +1,8 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "com.blockermark.app",
+    "sha256_cert_fingerprints": ["80:99:E7:FA:56:11:58:1D:30:CA:E1:36:EF:B9:62:09:06:24:42:7D:80:D6:BC:EB:85:31:29:FD:EA:4F:D7:5F"]
+  }
+}]
