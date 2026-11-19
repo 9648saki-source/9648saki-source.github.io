@@ -14,6 +14,13 @@
     <p><a class="btn" id="open" href="#">予定フォームで開く</a></p>
     <p class="muted">毎回このページを通さずに直接開くには、スマホの設定 → アプリ → 予定フォーム → デフォルトで開く で、このアドレスのリンクを予定フォームで開くようにしてください。</p>
   </div>
+  <div id="blk" hidden>
+    <h1>自動ブロッカーをオフにしてダウンロード</h1>
+    <p>ふだんはこのページは出ずに、「自動ブロッカー切替」アプリが自動ブロッカーをオフにしてから、ダウンロードのページを開きます。このページが出たときは、下のボタンを押してください。</p>
+    <p><a class="btn" id="blkgo" href="#">オフにしてダウンロードのページを開く</a></p>
+    <p><a id="blkrel" href="#">ダウンロードのページだけ開く</a></p>
+    <p class="muted">毎回このページを通さずに直接開くには、スマホの設定 → アプリ → 自動ブロッカー切替 → デフォルトで開く で、このアドレスのリンクを開くようにしてください。</p>
+  </div>
   <div id="nf" hidden>
     <h1>ページが見つかりません</h1>
     <p><a href="/">トップへ</a></p>
@@ -22,7 +29,14 @@
 <script>
   // /yotei-form/e/<予定ID> は予定フォームの予定へのリンク
   var m = location.pathname.match(/^\/yotei-form\/e\/(\d+)/);
-  if (m) {
+  // /blocker/<リポジトリ名>/ は、自動ブロッカーをオフにしてからそのアプリのダウンロードのページを開くリンク
+  var b = location.pathname.match(/^\/blocker\/([A-Za-z0-9._-]+)\/?$/);
+  if (b) {
+    document.title = '自動ブロッカー切替';
+    document.getElementById('blkgo').href = 'intent://open/' + b[1] + '#Intent;scheme=blockermark;package=com.blockermark.app;end';
+    document.getElementById('blkrel').href = 'https://github.com/9648saki-source/' + b[1] + '/releases/latest';
+    document.getElementById('blk').hidden = false;
+  } else if (m) {
     var url = 'intent://e/' + m[1] + '#Intent;scheme=yoteiform;package=com.yoteiform.app;end';
     document.getElementById('open').href = url;
     document.getElementById('app').hidden = false;
